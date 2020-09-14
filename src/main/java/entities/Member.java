@@ -7,21 +7,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
-//SUMIT
-
-//Kernen
 @Entity
 @NamedQuery(name = "RenameMe.deleteAllRows", query = "DELETE from RenameMe")
-public class RenameMe implements Serializable {
+public class Member implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    public RenameMe() {
-    }
-        
+
     public Long getId() {
         return id;
     }
@@ -29,35 +23,44 @@ public class RenameMe implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     // TODO, delete this class, or rename to an Entity class that makes sense for what you are about to do
     // Delete EVERYTHING below if you decide to use this class, it's dummy data used for the initial demo
-    private String dummyStr1;
-    private String dummyStr2;
+    private String name;
+    private int studentId;
+    private String colour;
 
-    public RenameMe(String dummyStr1, String dummyStr2) {
-        this.dummyStr1 = dummyStr1;
-        this.dummyStr2 = dummyStr2;
+    public Member(String name, int studentId, String colour) {
+        this.name = name;
+        this.studentId = studentId;
+        this.colour = colour;
     }
 
-    public String getDummyStr1() {
-        return dummyStr1;
+    public Member() {
     }
 
-    public void setDummyStr1(String dummyStr1) {
-        this.dummyStr1 = dummyStr1;
+    public String getName() {
+        return name;
     }
 
-    public String getDummyStr2() {
-        return dummyStr2;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setDummyStr2(String dummyStr2) {
-        this.dummyStr2 = dummyStr2;
+    public int getStudentId() {
+        return studentId;
     }
-    
-    
-    
 
-   
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getColour() {
+        return colour;
+    }
+
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+
 }
