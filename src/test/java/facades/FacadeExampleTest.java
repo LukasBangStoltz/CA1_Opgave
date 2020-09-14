@@ -9,10 +9,11 @@ import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 //Uncomment the line below, to temporarily disable this test
-//@Disabled
+    @Disabled
 public class FacadeExampleTest {
 
     private static EntityManagerFactory emf;
@@ -40,8 +41,8 @@ public class FacadeExampleTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
-            em.persist(new Member("Some txt", "More text"));
-            em.persist(new Member("aaa", "bbb"));
+            //em.persist(new Member("Some txt", "More text"));
+           // em.persist(new Member("aaa", "bbb"));
 
             em.getTransaction().commit();
         } finally {
@@ -57,7 +58,7 @@ public class FacadeExampleTest {
     // TODO: Delete or change this method 
     @Test
     public void testAFacadeMethod() {
-        assertEquals(2, facade.getRenameMeCount(), "Expects two rows in the database");
+        //assertEquals(2, facade.getRenameMeCount(), "Expects two rows in the database");
     }
 
 }
