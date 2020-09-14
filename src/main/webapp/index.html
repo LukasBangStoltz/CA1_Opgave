@@ -3,17 +3,55 @@
     <head>
         <title>Start Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <style>
+            .headerBig {
+                padding: 20px;
+                text-align: center;
+                color: black;
+                font-size: 40px;
+            }
+            .headerSmall {
+                text-align: center;
+                color: black;
+                font-size: 20px;
+            }
+        </style>
     </head>
     <body>
-        <h1>KERNEN</h1>
-        <h2>Class D</h2>
-        
-        <h3>Members</h3>
-        
-        <div>
-            <table>
-                
+        <h1 class="headerBig">KERNEN</h1>
+        <h2 class="headerSmall">Class D</h2>
+
+        <div id="tableDiv">
+            <h3 class="headerSmall">Members</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Student</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+
+                </tbody>
             </table>
+            <form>
+                <button>Reload names</button>
+            </form>
+        </div>
+
+        <div id="linksDiv">
+            <br>
+            <a href="#">Who Did What and our Group Contract</a>
+            <br>
+            <a href="#">Our Cool Jokes</a>
+            <br>
+            <a href="#">Our GitHub Repo</a>
+            <br>
+            <a href="#">Our feedback on Flow-1</a>
+            <br>
+            <a href="#">Our Cars For Sale (Red Students Only)</a>
         </div>
     </body>
 </html>
