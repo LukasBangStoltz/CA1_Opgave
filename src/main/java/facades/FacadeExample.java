@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -60,6 +61,16 @@ public class FacadeExample {
 
     }
 
+    public List<MemberDTO> getMemberByName(String name) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Query query = em.createNamedQuery("Member.getByName");
+            query.setParameter("name", name);
+            List<MemberDTO> memberList = query.getResultList();
+            return memberList;
+        } finally {
+            em.close();
+        }
+    }
+
 }
-
-
