@@ -61,18 +61,35 @@ public class MemberFacadeTest {
     // TODO: Delete or change this method 
     @Test
     public void testgetAllMembers() {
-        
+
         List<MemberDTO> listOfMembers = facade.getAllMembers();
-        
+
         assertEquals(2, listOfMembers.size(), "Expects the size of two");
         assertThat(listOfMembers, everyItem(hasProperty("favoriteSeries")));
     }
-    
+
     @Test
     public void testgetMemberByName() {
-        
+
         MemberDTO member = facade.getMemberByName("Lars");
-        
+
         assertEquals("Hannah Montana", member.getFavoriteSeries());
     }
+
+    @Test
+    public void testgetMemberByStudentId() {
+
+        MemberDTO member = facade.getMemberByStudentId(235);
+
+        assertEquals(235, member.getStudentId());
+    }
+
+    @Test
+    public void testCountMovies() {
+
+        long count = facade.countAllMovies();
+
+        assertEquals(2, count);
+    }
+
 }
