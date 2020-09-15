@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = "RenameMe.deleteAllRows", query = "DELETE from RenameMe")
 public class Member implements Serializable {
 
     private static final long serialVersionUID = 1L;
