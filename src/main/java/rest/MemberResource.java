@@ -49,4 +49,12 @@ public class MemberResource {
         return GSON.toJson(member);
     }
 
+    @GET
+    @Path("/{studentId}")
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getMovieByName(@PathParam("studentId") int studentId) {
+        MemberDTO member = FACADE.getMovieById(studentId);
+        return GSON.toJson(member);
+    }
+
 }

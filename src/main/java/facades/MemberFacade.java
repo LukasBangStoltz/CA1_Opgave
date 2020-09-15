@@ -73,4 +73,16 @@ public class MemberFacade {
         }
     }
 
+    public MemberDTO getMovieById(int studentId) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Query query = em.createQuery("Movie.getById");
+            query.setParameter("studentId", studentId);
+            MemberDTO member = (MemberDTO) query.getSingleResult();
+            return member;
+        } finally {
+            em.close();
+        }
+    }
+
 }
