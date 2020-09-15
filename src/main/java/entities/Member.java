@@ -15,6 +15,7 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name = "Member.getAll", query = "SELECT m FROM Member m"),
     @NamedQuery(name = "Member.getByName", query = "SELECT m FROM Member m WHERE m.name = :name"),
     @NamedQuery(name = "Member.getByStudentId", query = "SELECT m FROM Member m WHERE m.studentId = :studentId"),
+    @NamedQuery(name = "Member.getMemberCount", query = " SELECT COUNT(m) FROM Member m"), 
     //@NamedQuery(name = "Movie.getByYear", query = "Select m FROM Member m WHERE m.year = :year")
 })
 
