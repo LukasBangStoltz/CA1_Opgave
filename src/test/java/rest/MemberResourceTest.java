@@ -65,8 +65,8 @@ public class MemberResourceTest {
     @BeforeEach
     public void setUp() {
         EntityManager em = emf.createEntityManager();
-        Member r1 = new Member("Jon", 235, "Prison Break");
-        Member r2 = new Member("Lars", 132, "Hannah Montana");
+        r1 = new Member("Jon", 235, "Prison Break");
+        r2 = new Member("Lars", 132, "Hannah Montana");
 
         try {
             em.getTransaction().begin();
@@ -110,13 +110,12 @@ public class MemberResourceTest {
 //    public void testSpecificName() throws Exception {
 //        given()
 //                .contentType("application/json")
-//                .get("/groupmembers/name/Lars")
+//                .get("/test/name/Lars")
 //                .then()
 //                .assertThat()
 //                .statusCode(HttpStatus.OK_200.getStatusCode())
-//                .body("name", equalTo(r2.getName()));
+//                .body("name", hasItems(r2.getName()));
 //    }
-
     @Test
     public void testGetAllMovies() throws Exception {
         given()
@@ -129,4 +128,15 @@ public class MemberResourceTest {
                 .and()
                 .body("name", hasItems("Jon", "Lars"));
     }
+
+//    @Test
+//    public void testSpecificStudentId() throws Exception {
+//        given()
+//                .contentType("application/json")
+//                .get("groupmembers/235")
+//                .then()
+//                .assertThat()
+//                .statusCode(HttpStatus.OK_200.getStatusCode())
+//                .body("studentId", equalTo(r1.getStudentId()));
+//    }
 }

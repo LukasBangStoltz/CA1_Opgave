@@ -76,7 +76,7 @@ public class MemberFacade {
     public MemberDTO getMemberById(int studentId) {
         EntityManager em = emf.createEntityManager();
         try {
-            Query query = em.createQuery("Movie.getById");
+            Query query = em.createQuery("SELECT m FROM Member m WHERE m.studentId = :studentId");
             query.setParameter("studentId", studentId);
             MemberDTO member = (MemberDTO) query.getSingleResult();
             return member;

@@ -84,6 +84,7 @@ public class JokeFacadeTest {
         
         
         assertEquals("Hvad spiser fåret? uld", joke.getTheJoke());
+        
     }
     @Test
     public void getJokeByTypeTest(){
