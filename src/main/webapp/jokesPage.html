@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <style>
+            .headerBig {
+                padding: 20px;
+                text-align: center;
+                color: black;
+                font-size: 40px;
+            }
+            .headerSmall {
+                text-align: center;
+                color: black;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="jokesDiv">
+            <h3 class="headerSmall">Jokes</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Joke</th>
+                        <th scope="col">Type</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyJokes"></tbody>
+            </table>
+            <form>
+                <button id="fetchButtonJokes">Fetch Jokes</button>
+                <input type="text" id="singleJokeId"/>
+                <button id="fetchButtonSingleJoke">Fetch single joke</button>
+            </form>
+        </div>
+        <br>
+        <a href="index.html"></a>
+        <script src="javascript/FetchJokes.js" type="text/javascript"></script>
+    </body>
+</html>
