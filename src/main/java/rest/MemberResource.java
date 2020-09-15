@@ -45,8 +45,8 @@ public class MemberResource {
     @Path("/name/{name}")
     @Produces({MediaType.APPLICATION_JSON})
     public String getMovieByName(@PathParam("name") String name) {
-        List<MemberDTO> memberList = FACADE.getMemberByName(name);
-        return GSON.toJson(memberList);
+        MemberDTO member = FACADE.getMemberByName(name);
+        return GSON.toJson(member);
     }
 
 }

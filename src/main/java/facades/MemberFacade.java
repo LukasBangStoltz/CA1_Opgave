@@ -61,13 +61,13 @@ public class MemberFacade {
 
     }
 
-    public List<MemberDTO> getMemberByName(String name) {
+    public MemberDTO getMemberByName(String name) {
         EntityManager em = emf.createEntityManager();
         try {
-            Query query = em.createNamedQuery("Member.getByName");
+            Query query = em.createQuery("SELECT m FROM Member m WHERE m.name = :name", Member.class);
             query.setParameter("name", name);
-            List<MemberDTO> memberList = query.getResultList();
-            return memberList;
+            Member member = (Member) query.getSingleResult();
+            return new MemberDTO(member);
         } finally {
             em.close();
         }
