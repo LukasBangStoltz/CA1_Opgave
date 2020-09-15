@@ -9,12 +9,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
-//@NamedQueries({
-//    @NamedQuery(name = "Movie.deleteAllRows", query = "DELETE from Member"),
-//    @NamedQuery(name = "Movie.getAll", query = "SELECT m FROM Member m"),
-//    @NamedQuery(name = "Movie.getByTitle", query = "SELECT m FROM Member m WHERE m.name LIKE CONCAT('%',:title,'%')"),
-//    @NamedQuery(name = "Movie.getById", query = "SELECT m FROM Member m WHERE m.year = :year")
-//})
+
 public class Member implements Serializable {
 
     private static final long serialVersionUID = 1L;
