@@ -53,7 +53,7 @@ public class MemberResource {
     @Path("/{studentId}")
     @Produces({MediaType.APPLICATION_JSON})
     public String getMovieByName(@PathParam("studentId") int studentId) {
-        MemberDTO member = FACADE.getMemberById(studentId);
+        MemberDTO member = FACADE.getMemberByStudentId(studentId);
         return GSON.toJson(member);
     }
 
