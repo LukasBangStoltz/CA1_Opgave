@@ -23,4 +23,42 @@ public class MemberDTO {
         this.favoriteSeries = member.getFavoriteSeries();
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getFavoriteSeries() {
+        return favoriteSeries;
+    }
+
+    public void setFavoriteSeries(String favoriteSeries) {
+        this.favoriteSeries = favoriteSeries;
+    }
+    
+    
+    
+    @Override
+    public String toString() {
+        return "MemberDTO{" + "id=" + id + ", name=" + name + ", studentId=" + studentId + ", favoriteSeries=" + favoriteSeries + '}';
+    }
 }

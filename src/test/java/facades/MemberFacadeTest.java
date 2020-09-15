@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 //Uncomment the line below, to temporarily disable this test
-@Disabled
+//@Disabled
 public class MemberFacadeTest {
 
     private static EntityManagerFactory emf;
@@ -66,20 +66,14 @@ public class MemberFacadeTest {
         List<MemberDTO> listOfMembers = facade.getAllMembers();
         
         assertEquals(2, listOfMembers.size(), "Expects the size of two");
-        assertThat(listOfMembers, everyItem(hasProperty("studentId")));
-        
-        
-    }
-
-     @Test
-    public void test() {
-        
-        List<MemberDTO> listOfMembers = facade.getAllMembers();
-        
-        assertEquals(2, listOfMembers.size(), "Expects the size of two");
-        assertThat(listOfMembers, everyItem(hasProperty("studentId")));
-        
-        
+        assertThat(listOfMembers, everyItem(hasProperty("favoriteSeries")));
     }
     
+    @Test
+    public void testgetMemberByName() {
+        
+        MemberDTO member = facade.getMemberByName("Lars");
+        
+        assertEquals("Hannah Montana", member.getFavoriteSeries());
+    }
 }
