@@ -7,7 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
+import javax.persistence.Query;
 
 public class JokeFacade {
 
@@ -42,7 +42,7 @@ public class JokeFacade {
         List<JokeDTO> allJokesDTO = new ArrayList();
 
         try {
-            allJokes = em.createQuery("SELECT j FROM Joke j", Joke.class).getResultList();
+            allJokes = em.createNamedQuery("Joke.getAll").getResultList();
 
             allJokes.forEach((Joke joke) -> {
 
@@ -57,6 +57,36 @@ public class JokeFacade {
 
     }
 
+    public JokeDTO getJokeById(long id) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Joke joke = em.find(Joke.class, id);
+            return new JokeDTO(joke);
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<JokeDTO> getJokeByType(String jokeType) {
+        EntityManager em = emf.createEntityManager();
+        List<Joke> jokeList = null;
+        List<JokeDTO> jokeDTOlist = new ArrayList();
+        
+        try {
+            Query query = em.createNamedQuery("Joke.getByType");
+            query.setParameter("jokeType", jokeType);
+            jokeList = query.getResultList();
+            
+            jokeList.forEach((Joke joke) -> {
+
+                jokeDTOlist.add(new JokeDTO(joke));
+
+            });
+            return jokeDTOlist;
+        } finally {
+            em.close();
+        }
+
+    }
+
 }
-
-
