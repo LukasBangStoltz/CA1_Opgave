@@ -9,6 +9,15 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 @Entity
+
+@NamedQueries({
+    @NamedQuery(name = "Member.deleteAllRows", query = "DELETE from Member"),
+    @NamedQuery(name = "Member.getAll", query = "SELECT m FROM Member m"),
+    @NamedQuery(name = "Member.getByName", query = "SELECT m FROM Member m WHERE m.name = :name"),
+    @NamedQuery(name = "Member.getByStudentId", query = "SELECT m FROM Member m WHERE m.studentId = :studentId"),
+    //@NamedQuery(name = "Movie.getByYear", query = "Select m FROM Member m WHERE m.year = :year")
+})
+
 public class Member implements Serializable {
 
     private static final long serialVersionUID = 1L;

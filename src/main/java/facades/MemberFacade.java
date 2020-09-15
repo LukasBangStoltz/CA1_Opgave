@@ -73,7 +73,7 @@ public class MemberFacade {
         }
     }
 
-    public MemberDTO getMovieById(int studentId) {
+    public MemberDTO getMemberById(int studentId) {
         EntityManager em = emf.createEntityManager();
         try {
             Query query = em.createQuery("Movie.getById");
@@ -83,6 +83,17 @@ public class MemberFacade {
         } finally {
             em.close();
         }
+    }
+
+    public long countAllMovies() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            long count = (long) em.createQuery("SELECT COUNT(m) FROM Member m").getSingleResult();
+            return count;
+        } finally {
+            em.close();
+        }
+
     }
 
 }

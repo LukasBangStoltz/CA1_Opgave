@@ -31,7 +31,7 @@ public class MemberResource {
         return "{\"msg\":\"Hello World\"}";
     }
 
-    @Path("all")
+    @Path("/all")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getAllGroupMembers() {
@@ -53,8 +53,17 @@ public class MemberResource {
     @Path("/{studentId}")
     @Produces({MediaType.APPLICATION_JSON})
     public String getMovieByName(@PathParam("studentId") int studentId) {
-        MemberDTO member = FACADE.getMovieById(studentId);
+        MemberDTO member = FACADE.getMemberById(studentId);
         return GSON.toJson(member);
+    }
+
+    @Path("/count")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String getCountMovies() {
+        long count = (long) FACADE.countAllMovies();
+        //System.out.println("--------------->"+count);
+        return "{\"count\":" + count + "}";  //Done manually so no need for a DTO
     }
 
 }
