@@ -13,14 +13,14 @@ public class MemberDTO {
     private long id;
     private String name;
     private int studentId;
-    private String colour;
+    private String favoriteSeries;
 
     public MemberDTO(Member member){
 
         this.id = member.getId();
         this.name = member.getName();
         this.studentId = member.getStudentId();
-        this.colour = member.getColour();
+        this.favoriteSeries = member.getFavoriteSeries();
     }
 
 }

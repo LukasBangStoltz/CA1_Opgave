@@ -29,15 +29,16 @@ public class Member implements Serializable {
     // Delete EVERYTHING below if you decide to use this class, it's dummy data used for the initial demo
     private String name;
     private int studentId;
-    private String colour;
+    private String favoriteSeries;
 
-    public Member(String name, int studentId, String colour) {
+    public Member(String name, int studentId, String favoriteSeries) {
         this.name = name;
         this.studentId = studentId;
-        this.colour = colour;
+        this.favoriteSeries = favoriteSeries;
     }
 
     public Member() {
+
     }
 
     public String getName() {
@@ -56,12 +57,12 @@ public class Member implements Serializable {
         this.studentId = studentId;
     }
 
-    public String getColour() {
-        return colour;
+    public String getFavoriteSeries() {
+        return favoriteSeries;
     }
 
-    public void setColour(String colour) {
-        this.colour = colour;
+    public void setFavoriteSeries(String favoriteSeries) {
+        this.favoriteSeries = favoriteSeries;
     }
 
 }
