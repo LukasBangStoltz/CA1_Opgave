@@ -5,8 +5,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+@NamedQuery(name = "Joke.deleteAllRows", query = "DELETE FROM Joke"),
+@NamedQuery(name = "Joke.getAll", query = "SELECT j FROM Joke j"),
+@NamedQuery(name = "Joke.getById", query = "SELECT j FROM Joke j WHERE j.id = :id"),
+@NamedQuery(name = "Joke.getByType", query = "SELECT j FROM Joke j WHERE j.jokeType = :jokeType")
+      
+})
 public class Joke implements Serializable {
 
     private static final long serialVersionUID = 1L;
