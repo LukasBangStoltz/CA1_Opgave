@@ -46,7 +46,7 @@ public class MemberFacade {
         List<MemberDTO> allMembersDTO = new ArrayList();
 
         try {
-            allMembers = em.createQuery("SELECT m FROM Member m", Member.class).getResultList();
+            allMembers = em.createNamedQuery("Member.getAll", Member.class).getResultList();
 
             allMembers.forEach((Member member) -> {
 
@@ -64,7 +64,7 @@ public class MemberFacade {
     public MemberDTO getMemberByName(String name) {
         EntityManager em = emf.createEntityManager();
         try {
-            Query query = em.createQuery("SELECT m FROM Member m WHERE m.name = :name", Member.class);
+            Query query = em.createNamedQuery("Member.getByName", Member.class);
             query.setParameter("name", name);
             Member member = (Member) query.getSingleResult();
             return new MemberDTO(member);
@@ -76,7 +76,7 @@ public class MemberFacade {
     public MemberDTO getMemberByStudentId(int studentId) {
         EntityManager em = emf.createEntityManager();
         try {
-            Query query = em.createQuery("SELECT m FROM Member m WHERE m.studentId = :studentId", Member.class);
+            Query query = em.createNamedQuery("Member.getByStudentId", Member.class);
             query.setParameter("studentId", studentId);
             Member member = (Member) query.getSingleResult();
             return new MemberDTO(member);
@@ -88,7 +88,7 @@ public class MemberFacade {
     public long countAllMovies() {
         EntityManager em = emf.createEntityManager();
         try {
-            long count = (long) em.createQuery("SELECT COUNT(m) FROM Member m").getSingleResult();
+            long count = (long) em.createNamedQuery("Member.getMemberCount").getSingleResult();
             return count;
         } finally {
             em.close();
