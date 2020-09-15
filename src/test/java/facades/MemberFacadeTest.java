@@ -1,9 +1,13 @@
 package facades;
 
+import DTO.MemberDTO;
 import utils.EMF_Creator;
 import entities.Member;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,18 +18,18 @@ import org.junit.jupiter.api.Test;
 
 //Uncomment the line below, to temporarily disable this test
 @Disabled
-public class FacadeExampleTest {
+public class MemberFacadeTest {
 
     private static EntityManagerFactory emf;
-    private static FacadeExample facade;
+    private static MemberFacade facade;
 
-    public FacadeExampleTest() {
+    public MemberFacadeTest() {
     }
 
     @BeforeAll
     public static void setUpClass() {
-       emf = EMF_Creator.createEntityManagerFactoryForTest();
-       facade = FacadeExample.getFacadeExample(emf);
+        emf = EMF_Creator.createEntityManagerFactoryForTest();
+        facade = MemberFacade.getFacadeExample(emf);
     }
 
     @AfterAll
@@ -40,9 +44,9 @@ public class FacadeExampleTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNamedQuery("RenameMe.deleteAllRows").executeUpdate();
-           // em.persist(new Member("Some txt", "More text"));
-            //em.persist(new Member("aaa", "bbb"));
+            em.createNativeQuery("DELETE FROM MEMBER").executeUpdate();
+            em.persist(new Member("Jon", 235, "Prison Break"));
+            em.persist(new Member("Lars", 132, "Hannah Montana"));
 
             em.getTransaction().commit();
         } finally {
@@ -57,8 +61,25 @@ public class FacadeExampleTest {
 
     // TODO: Delete or change this method 
     @Test
-    public void testAFacadeMethod() {
-        //assertEquals(2, facade.getRenameMeCount(), "Expects two rows in the database");
+    public void testgetAllMembers() {
+        
+        List<MemberDTO> listOfMembers = facade.getAllMembers();
+        
+        assertEquals(2, listOfMembers.size(), "Expects the size of two");
+        assertThat(listOfMembers, everyItem(hasProperty("studentId")));
+        
+        
     }
 
+     @Test
+    public void test() {
+        
+        List<MemberDTO> listOfMembers = facade.getAllMembers();
+        
+        assertEquals(2, listOfMembers.size(), "Expects the size of two");
+        assertThat(listOfMembers, everyItem(hasProperty("studentId")));
+        
+        
+    }
+    
 }

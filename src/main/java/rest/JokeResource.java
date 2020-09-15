@@ -4,7 +4,7 @@ import DTO.JokeDTO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import utils.EMF_Creator;
-import facades.FacadeExample;
+import facades.MemberFacade;
 import facades.JokeFacade;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;

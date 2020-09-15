@@ -13,13 +13,13 @@ import javax.persistence.Query;
  *
  * Rename Class to a relevant name Add add relevant facade methods
  */
-public class FacadeExample {
+public class MemberFacade {
 
-    private static FacadeExample instance;
+    private static MemberFacade instance;
     private static EntityManagerFactory emf;
 
     //Private Constructor to ensure Singleton
-    private FacadeExample() {
+    private MemberFacade() {
     }
 
     /**
@@ -27,10 +27,10 @@ public class FacadeExample {
      * @param _emf
      * @return an instance of this facade class.
      */
-    public static FacadeExample getFacadeExample(EntityManagerFactory _emf) {
+    public static MemberFacade getFacadeExample(EntityManagerFactory _emf) {
         if (instance == null) {
             emf = _emf;
-            instance = new FacadeExample();
+            instance = new MemberFacade();
         }
         return instance;
     }
