@@ -4,6 +4,7 @@ import DTO.JokeDTO;
 import entities.Joke;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -71,18 +72,32 @@ public class JokeFacade {
         EntityManager em = emf.createEntityManager();
         List<Joke> jokeList = null;
         List<JokeDTO> jokeDTOlist = new ArrayList();
-        
+
         try {
             Query query = em.createNamedQuery("Joke.getByType");
             query.setParameter("jokeType", jokeType);
             jokeList = query.getResultList();
-            
+
             jokeList.forEach((Joke joke) -> {
 
                 jokeDTOlist.add(new JokeDTO(joke));
 
             });
             return jokeDTOlist;
+        } finally {
+            em.close();
+        }
+
+    }
+
+    public JokeDTO getRandomJoke() {
+
+        EntityManager em = emf.createEntityManager();
+        try {
+            Random random = new Random();
+            long id = random.nextInt(10 - 1 + 1) + 1;
+            Joke joke = em.find(Joke.class, id);
+            return new JokeDTO(joke);
         } finally {
             em.close();
         }
