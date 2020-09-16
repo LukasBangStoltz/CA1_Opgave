@@ -12,7 +12,7 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
     @NamedQuery(name = "Car.deleteAllRows", query = "DELETE from Car"),
     @NamedQuery(name = "Car.getAll", query = "SELECT c FROM Car c"),
-    @NamedQuery(name = "Car.getByModel", query = "SELECT c FROM Car c WHERE c.model = :name"),
+    @NamedQuery(name = "Car.getByModel", query = "SELECT c FROM Car c WHERE c.model = :model"),
     @NamedQuery(name = "Car.getByYear", query = "SELECT c FROM Car c WHERE c.year = :year"),
     @NamedQuery(name = "Car.getCarCount", query = " SELECT COUNT(c) FROM Car c"),
     @NamedQuery(name = "Car.getByPrice", query = "Select c FROM Car c WHERE c.price = :price"),

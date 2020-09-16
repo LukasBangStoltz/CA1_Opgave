@@ -62,10 +62,13 @@ public class CarFacade {
 
     }
 
-    public CarDTO getByModel() {
+    public CarDTO getByModel(String model) {
         EntityManager em = emf.createEntityManager();
         try {
-            Car car = (Car) em.createNamedQuery("Car.getByModel", Car.class).getSingleResult();
+
+            Query query = em.createNamedQuery("Car.getByModel", Car.class);
+            query.setParameter("model", model);
+            Car car = (Car) query.getSingleResult();
             return new CarDTO(car);
         } finally {
             em.close();
@@ -73,10 +76,12 @@ public class CarFacade {
 
     }
 
-    public CarDTO getByOwner() {
+    public CarDTO getByOwner(String Owner) {
         EntityManager em = emf.createEntityManager();
         try {
-            Car car = (Car) em.createNamedQuery("Car.getByOwner", Car.class).getSingleResult();
+            Query query = em.createNamedQuery("Car.getByOwner", Car.class);
+            query.setParameter("owner", Owner);
+            Car car = (Car) query.getSingleResult();
             return new CarDTO(car);
         } finally {
             em.close();
@@ -84,10 +89,12 @@ public class CarFacade {
 
     }
 
-    public CarDTO getByPrice() {
+    public CarDTO getByPrice(int price) {
         EntityManager em = emf.createEntityManager();
         try {
-            Car car = (Car) em.createNamedQuery("Car.getByPrice", Car.class).getSingleResult();
+            Query query = em.createNamedQuery("Car.getByPrice", Car.class);
+            query.setParameter("price", price);
+            Car car = (Car) query.getSingleResult();
             return new CarDTO(car);
         } finally {
             em.close();
@@ -95,10 +102,12 @@ public class CarFacade {
 
     }
 
-    public CarDTO getByYear() {
+    public CarDTO getByYear(int year) {
         EntityManager em = emf.createEntityManager();
         try {
-            Car car = (Car) em.createNamedQuery("Car.getByYear", Car.class).getSingleResult();
+            Query query = em.createNamedQuery("Car.getByYear", Car.class);
+            query.setParameter("year", year);
+            Car car = (Car) query.getSingleResult();
             return new CarDTO(car);
         } finally {
             em.close();
