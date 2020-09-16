@@ -15,6 +15,7 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name = "Car.getByModel", query = "SELECT c FROM Car c WHERE c.model = :model"),
     @NamedQuery(name = "Car.getByYear", query = "SELECT c FROM Car c WHERE c.year = :year"),
     @NamedQuery(name = "Car.getCarCount", query = " SELECT COUNT(c) FROM Car c"),
+    @NamedQuery(name = "Car.getByMake", query = " SELECT c FROM Car c WHERE c.make =:make"),
     @NamedQuery(name = "Car.getByPrice", query = "Select c FROM Car c WHERE c.price = :price"),
     @NamedQuery(name = "Car.getByOwner", query = "Select c FROM Car c WHERE c.owner = :owner"),})
 public class Car implements Serializable {

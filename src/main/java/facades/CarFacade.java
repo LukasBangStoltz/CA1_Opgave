@@ -24,6 +24,14 @@ public class CarFacade {
     private CarFacade() {
     }
 
+    public static CarFacade getFacadeExample(EntityManagerFactory _emf) {
+        if (instance == null) {
+            emf = _emf;
+            instance = new CarFacade();
+        }
+        return instance;
+    }
+
     /**
      *
      * @param _emf
@@ -62,14 +70,24 @@ public class CarFacade {
 
     }
 
-    public CarDTO getByModel(String model) {
+    public List<CarDTO> getByModel(String model) {
         EntityManager em = emf.createEntityManager();
-        try {
 
+        List<Car> allCars = null;
+        List<CarDTO> allCarsDTO = new ArrayList();
+
+        try {
             Query query = em.createNamedQuery("Car.getByModel", Car.class);
             query.setParameter("model", model);
-            Car car = (Car) query.getSingleResult();
-            return new CarDTO(car);
+            allCars = query.getResultList();
+
+            allCars.forEach((Car car) -> {
+
+                allCarsDTO.add(new CarDTO(car));
+
+            });
+
+            return allCarsDTO;
         } finally {
             em.close();
         }
@@ -89,26 +107,71 @@ public class CarFacade {
 
     }
 
-    public CarDTO getByPrice(int price) {
+    public List<CarDTO> getByPrice(int price) {
         EntityManager em = emf.createEntityManager();
+
+        List<Car> allCars = null;
+        List<CarDTO> allCarsDTO = new ArrayList();
+
         try {
             Query query = em.createNamedQuery("Car.getByPrice", Car.class);
             query.setParameter("price", price);
-            Car car = (Car) query.getSingleResult();
-            return new CarDTO(car);
+            allCars = query.getResultList();
+            allCars.forEach((Car car) -> {
+
+                allCarsDTO.add(new CarDTO(car));
+
+            });
+
+            return allCarsDTO;
         } finally {
             em.close();
         }
 
     }
 
-    public CarDTO getByYear(int year) {
+    public List<CarDTO> getByYear(int year) {
         EntityManager em = emf.createEntityManager();
+
+        List<Car> allCars = null;
+        List<CarDTO> allCarsDTO = new ArrayList();
+
         try {
             Query query = em.createNamedQuery("Car.getByYear", Car.class);
             query.setParameter("year", year);
-            Car car = (Car) query.getSingleResult();
-            return new CarDTO(car);
+            allCars = query.getResultList();
+
+            allCars.forEach((Car car) -> {
+
+                allCarsDTO.add(new CarDTO(car));
+
+            });
+
+            return allCarsDTO;
+        } finally {
+            em.close();
+        }
+
+    }
+    
+      public List<CarDTO> getByMake(String make) {
+        EntityManager em = emf.createEntityManager();
+
+        List<Car> allCars = null;
+        List<CarDTO> allCarsDTO = new ArrayList();
+
+        try {
+            Query query = em.createNamedQuery("Car.getByMake", Car.class);
+            query.setParameter("make", make);
+            allCars = query.getResultList();
+
+            allCars.forEach((Car car) -> {
+
+                allCarsDTO.add(new CarDTO(car));
+
+            });
+
+            return allCarsDTO;
         } finally {
             em.close();
         }
