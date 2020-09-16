@@ -61,7 +61,7 @@ public class MemberResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String getCountMovies() {
-        long count = (long) FACADE.countAllMovies();
+        long count = (long) FACADE.countAllMembers();
         //System.out.println("--------------->"+count);
         return "{\"count\":" + count + "}";  //Done manually so no need for a DTO
     }
