@@ -1,5 +1,6 @@
 package rest;
 
+import DTO.JokeDTO;
 import entities.Joke;
 import utils.EMF_Creator;
 import io.restassured.RestAssured;
@@ -63,7 +64,7 @@ public class JokeResourceTest {
     // Setup the DataBase (used by the test-server and this test) in a known state BEFORE EACH TEST
     //TODO -- Make sure to change the EntityClass used below to use YOUR OWN (renamed) Entity class
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws InterruptedException {
         EntityManager em = emf.createEntityManager();
         Joke j1 = new Joke("Hvad spiser koen, lol ihvertfald ikke mælk", "Dyrejoke");
         Joke j2 = new Joke("Hvad spiser fåret? uld", "Dyrejoke");
@@ -72,6 +73,7 @@ public class JokeResourceTest {
         try {
             em.getTransaction().begin();
             em.createNamedQuery("Joke.deleteAllRows").executeUpdate();
+            em.createNativeQuery("alter table JOKE AUTO_INCREMENT = 1").executeUpdate();
             em.persist(j1);
             em.persist(j2);
             em.persist(j3);
@@ -118,4 +120,25 @@ public class JokeResourceTest {
                 .body("size()", is(2));
     }
 
+    @Test
+    public void testGetJokeById() throws Exception {
+        given()
+                .contentType("application/json")
+                .get("/jokes/id/1").then()
+                .assertThat()
+                .body("id", equalTo(1));
+    }
+
+    // Vi ved ikke hvordan denne test skal testes
+    /*
+    @Test
+    public void testGetRandomJoke() throws Exception {
+        given()
+                .contentType("application/json")
+                .get("/jokes/randomjoke").then()
+                .assertThat()
+                .statusCode(HttpStatus.OK_200.getStatusCode())
+                .body();
+    }
+     */
 }

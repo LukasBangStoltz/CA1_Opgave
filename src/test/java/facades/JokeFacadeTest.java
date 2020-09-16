@@ -5,16 +5,20 @@
  */
 package facades;
 
+
 import DTO.JokeDTO;
 import entities.Joke;
 import utils.EMF_Creator;
 import entities.Member;
 import java.util.List;
+import java.util.Random;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.validation.constraints.AssertTrue;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -78,17 +82,30 @@ public class JokeFacadeTest {
         int exp = 3;
         assertEquals(exp, jokeList.size(), "Expected thre rows from database");
     }
+    
     @Test
     public void getJokeByIdTest(){
         JokeDTO joke = facade.getJokeById(j2.getId());
-        
-        
         assertEquals("Hvad spiser fåret? uld", joke.getTheJoke());
     }
+    
     @Test
     public void getJokeByTypeTest(){
         List <JokeDTO> jokeTypeList = facade.getJokeByType("Dyrejoke");
         int exp = 2;
         assertEquals(exp, jokeTypeList.size());
     }
+    
+    @Test
+    public void getRandomJokeTest(){
+        Random random = new Random();
+        JokeDTO joke = facade.getRandomJoke();
+      
+        long jokeId = joke.getId();
+        
+        assertTrue(jokeId >= 1 || jokeId <= 3);
+    }
+
+
+    
 }
