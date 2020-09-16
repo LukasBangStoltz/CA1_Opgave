@@ -1,9 +1,10 @@
-package facades;
+package testFacades;
 
-import DTO.MemberDTO;
+import DTO.CarDTO;
+import entities.Car;
+import facades.CarFacade;
 import utils.EMF_Creator;
 import java.util.List;
-import entities.Member;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -17,18 +18,22 @@ import org.junit.jupiter.api.Test;
 
 //Uncomment the line below, to temporarily disable this test
 //@Disabled
-public class MemberFacadeTest {
+public class CarFacadeTest {
 
     private static EntityManagerFactory emf;
-    private static MemberFacade facade;
+    private static CarFacade facade;
 
-    public MemberFacadeTest() {
+    Car car1;
+    Car car2;
+
+    public CarFacadeTest() {
+
     }
 
     @BeforeAll
     public static void setUpClass() {
         emf = EMF_Creator.createEntityManagerFactoryForTest();
-        facade = MemberFacade.getFacadeExample(emf);
+        facade = CarFacade.getFacadeExample(emf);
     }
 
     @AfterAll
@@ -43,12 +48,17 @@ public class MemberFacadeTest {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.createNativeQuery("DELETE FROM MEMBER").executeUpdate();
-            em.persist(new Member("Jon", 235, "Prison Break"));
-            em.persist(new Member("Lars", 132, "Hannah Montana"));
+            em.createNativeQuery("DELETE FROM CAR").executeUpdate();
+            em.createNativeQuery("alter table CAR AUTO_INCREMENT = 1").executeUpdate();
+
+            car1 = new Car("Panamera", "Porsche", 2020, 100000, "Sumit");
+            car2 = new Car("M5", "BMW", 2017, 50000, "Lukas");
+            em.persist(car1);
+            em.persist(car2);
 
             em.getTransaction().commit();
         } finally {
+
             em.close();
         }
     }
@@ -60,36 +70,52 @@ public class MemberFacadeTest {
 
     // TODO: Delete or change this method 
     @Test
-    public void testgetAllMembers() {
+    public void testgetAllCars() {
 
-        List<MemberDTO> listOfMembers = facade.getAllMembers();
+        List<CarDTO> listOfCars = facade.getAllCars();
 
-        assertEquals(2, listOfMembers.size(), "Expects the size of two");
-        assertThat(listOfMembers, everyItem(hasProperty("favoriteSeries")));
+        assertEquals(2, listOfCars.size(), "Expects the size of two");
+        assertThat(listOfCars, everyItem(hasProperty("model")));
     }
 
     @Test
-    public void testgetMemberByName() {
+    public void testgetCarByModel() {
 
-        MemberDTO member = facade.getMemberByName("Lars");
+        List<CarDTO> car = facade.getByModel("Panamera");
 
-        assertEquals("Hannah Montana", member.getFavoriteSeries());
+        assertEquals(1, car.size());
     }
 
     @Test
-    public void testgetMemberByStudentId() {
+    public void testgetCarByMake() {
 
-        MemberDTO member = facade.getMemberByStudentId(235);
+        List<CarDTO> car = facade.getByMake("BMW");
 
-        assertEquals(235, member.getStudentId());
+        assertEquals(1, car.size());
     }
 
     @Test
-    public void testCountMovies() {
+    public void testgetCarByOwner() {
 
-        long count = facade.countAllMovies();
+        CarDTO car = facade.getByOwner("Lukas");
 
-        assertEquals(2, count);
+        assertEquals("Lukas", car.getOwner());
+    }
+
+    @Test
+    public void testgetCarByYear() {
+
+        List<CarDTO> car = facade.getByYear(2020);
+
+        assertEquals(1, car.size());
+    }
+
+    @Test
+    public void testgetCarByPrice() {
+
+        List<CarDTO> car = facade.getByPrice(50000);
+
+        assertEquals(1, car.size());
     }
 
 }

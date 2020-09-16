@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package facades;
+package testFacades;
 
 
 import DTO.JokeDTO;
 import entities.Joke;
 import utils.EMF_Creator;
 import entities.Member;
+import facades.JokeFacade;
 import java.util.List;
 import java.util.Random;
 import javax.persistence.EntityManager;

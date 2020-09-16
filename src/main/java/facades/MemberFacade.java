@@ -85,7 +85,7 @@ public class MemberFacade {
         }
     }
 
-    public long countAllMovies() {
+    public long countAllMembers() {
         EntityManager em = emf.createEntityManager();
         try {
             long count = (long) em.createNamedQuery("Member.getMemberCount").getSingleResult();

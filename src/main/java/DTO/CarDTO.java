@@ -39,9 +39,13 @@ public class CarDTO {
     public int getPrice() {
         return price;
     }
+    
 
     public String getOwner() {
         return owner;
     }
+
+ 
+    
 
 }
