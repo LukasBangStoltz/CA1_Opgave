@@ -29,7 +29,7 @@ public class JokeResourceTest {
 
     private static final int SERVER_PORT = 7777;
     private static final String SERVER_URL = "http://localhost/api";
-    private static Joke j1, j2, j3;
+    private static Joke j1, j2, j3, j4, j5, j6, j7, j8, j9, j10;
 
     static final URI BASE_URI = UriBuilder.fromUri(SERVER_URL).port(SERVER_PORT).build();
     private static HttpServer httpServer;
@@ -69,6 +69,13 @@ public class JokeResourceTest {
         Joke j1 = new Joke("Hvad spiser koen, lol ihvertfald ikke mælk", "Dyrejoke");
         Joke j2 = new Joke("Hvad spiser fåret? uld", "Dyrejoke");
         Joke j3 = new Joke("Hvad spiser asiateren? hunde", "Racejoke");
+        j4 = new Joke("Hvad spiser asiateren? 4", "Racejoke");
+        j5 = new Joke("Hvad spiser asiateren? 5", "Racejoke");
+        j6 = new Joke("Hvad spiser asiateren? 6", "Racejoke");
+        j7 = new Joke("Hvad spiser asiateren? 7", "Racejoke");
+        j8 = new Joke("Hvad spiser asiateren? 8", "Racejoke");
+        j9 = new Joke("Hvad spiser asiateren? 9", "Racejoke");
+        j10 = new Joke("Hvad spiser asiateren? 10", "Racejoke");
 
         try {
             em.getTransaction().begin();
@@ -77,6 +84,13 @@ public class JokeResourceTest {
             em.persist(j1);
             em.persist(j2);
             em.persist(j3);
+            em.persist(j4);
+            em.persist(j5);
+            em.persist(j6);
+            em.persist(j7);
+            em.persist(j8);
+            em.persist(j9);
+            em.persist(j10);
             em.getTransaction().commit();
         } finally {
             em.close();
@@ -107,7 +121,7 @@ public class JokeResourceTest {
                 .get("/jokes/alljokes").then()
                 .assertThat()
                 .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("size()", is(3));
+                .body("size()", is(10));
     }
 
     @Test
