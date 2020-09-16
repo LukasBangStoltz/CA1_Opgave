@@ -107,14 +107,25 @@ public class MemberResourceTest {
     }
 
 //    @Test
-//    public void testSpecificName() throws Exception {
+//    public void testStudentId() throws Exception {
+//        given()
+//                .contentType("application/json")
+//                .get("/groupmembers/235")
+//                .then()
+//                .assertThat()
+//                .statusCode(HttpStatus.OK_200.getStatusCode())
+//                .body("studentId", hasItems(r2.getStudentId()));
+//    }
+    
+//    @Test
+//    public void testStudentName() throws Exception {
 //        given()
 //                .contentType("application/json")
 //                .get("/groupmembers/name/Lars")
 //                .then()
 //                .assertThat()
 //                .statusCode(HttpStatus.OK_200.getStatusCode())
-//                .body("name", equalTo(r2.getName()));
+//                .body("name", hasItems("Lars"));
 //    }
 
     @Test
