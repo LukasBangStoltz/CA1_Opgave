@@ -2,7 +2,7 @@
 
 /* global then */
 
-let getFetchButtonMembers = document.getElementById("fetchCars");
+let getFetchButtonMembers = document.getElementById("fetchButtonMembers");
 
 getFetchButtonMembers.addEventListener('click', (event) => {
     event.preventDefault();
