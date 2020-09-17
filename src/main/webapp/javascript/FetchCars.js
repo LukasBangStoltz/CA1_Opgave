@@ -9,7 +9,8 @@ getFetchButtonCars.addEventListener('click', (event) => {
 
 function fetchAllCars() {
     // let price = document.getElementById("valueOfPrice").value
-    let url = "http://localhost:8080/jpareststarter/api/groupmembers/all/";
+    let url = "https://kodekongen.dk/jpareststarter/api/car/all/";
+    //let url = "http://localhost:8080/jpareststarter/api/car/all/"
     fetch(url)
             .then(res => res.json())
             .then(data => {
