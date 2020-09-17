@@ -21,7 +21,8 @@ getFetchButtonRandomJoke.addEventListener('click', (event) => {
 })
 
 function fetchAllJokes() {
-    let url = "http://localhost:8080/jpareststarter/api/jokes/alljokes/";
+    //let url = "http://localhost:8080/jpareststarter/api/jokes/alljokes/";
+    let url = "https://kodekongen.dk/CA1_Opgave/api/jokes/alljokes/"
     fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -40,7 +41,8 @@ function fetchSingleJoke() {
     if (id < 11) {
 
 
-        let url = "http://localhost:8080/jpareststarter/api/jokes/id/" + id;
+        //let url = "http://localhost:8080/jpareststarter/api/jokes/id/" + id;
+        let url = "https://kodekongen.dk/CA1_Opgave/api/jokes/id/" + id;
         fetch(url)
                 .then(res => res.json())
                 .then(data => {
@@ -61,7 +63,8 @@ function fetchSingleJoke() {
 
 
 function fetchRandomJoke() {
-    let url = "http://localhost:8080/jpareststarter/api/jokes/randomjoke/"
+    //let url = "http://localhost:8080/jpareststarter/api/jokes/randomjoke/"
+    let url = "https://kodekongen.dk/CA1_Opgave/api/jokes/randomjoke/"
     fetch(url)
             .then(res => res.json())
             .then(data => {
