@@ -145,15 +145,4 @@ public class CarResourceTest {
                 .statusCode(HttpStatus.OK_200.getStatusCode())
                 .body("year", hasItems(2017));
     }
-    
-    @Test
-    public void testGetCarByOwner() throws Exception {
-        given()
-                .contentType("application/json")
-                .get("/car/owner/{owner}", car2.getOwner()).then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .body("owner", equalTo("Lukas"));
-    }
-    
 }

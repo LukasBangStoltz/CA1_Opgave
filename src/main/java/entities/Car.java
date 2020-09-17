@@ -1,6 +1,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,6 +39,7 @@ public class Car implements Serializable {
     private int year;
     private int price;
     private String owner;
+    private LocalTime created;
 
     public Car(String model, String make, int year, int price, String owner) {
         this.model = model;
@@ -45,6 +47,7 @@ public class Car implements Serializable {
         this.year = year;
         this.price = price;
         this.owner = owner;
+        this.created = LocalTime.now();
     }
 
     public Car() {
@@ -91,4 +94,12 @@ public class Car implements Serializable {
         this.owner = owner;
     }
 
+    public LocalTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalTime created) {
+        this.created = created;
+    }
+    
 }
