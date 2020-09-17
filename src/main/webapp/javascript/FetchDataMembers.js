@@ -10,8 +10,8 @@ getFetchButtonMembers.addEventListener('click', (event) => {
 });
 
 function fetchAllMembers() {
-    let url = "https://kodekongen.dk/CA1_Opgave/api/groupmembers/all";
-    //let url = "http://localhost:8080/jpareststarter/api/groupmembers/all/";
+    //let url = "https://kodekongen.dk/CA1_Opgave/api/groupmembers/all";
+    let url = "http://localhost:8080/jpareststarter/api/groupmembers/all/";
     fetch(url)
             .then(res => res.json())
             .then(data => {

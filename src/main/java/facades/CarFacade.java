@@ -91,19 +91,6 @@ public class CarFacade {
 
     }
 
-    public CarDTO getByOwner(String Owner) {
-        EntityManager em = emf.createEntityManager();
-        try {
-            Query query = em.createNamedQuery("Car.getByOwner", Car.class);
-            query.setParameter("owner", Owner);
-            Car car = (Car) query.getSingleResult();
-            return new CarDTO(car);
-        } finally {
-            em.close();
-        }
-
-    }
-
     public List<CarDTO> getByPrice(int price) {
         EntityManager em = emf.createEntityManager();
 

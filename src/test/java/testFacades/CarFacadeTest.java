@@ -95,14 +95,6 @@ public class CarFacadeTest {
     }
 
     @Test
-    public void testgetCarByOwner() {
-
-        CarDTO car = facade.getByOwner("Lukas");
-
-        assertEquals("Lukas", car.getOwner());
-    }
-
-    @Test
     public void testgetCarByYear() {
 
         List<CarDTO> car = facade.getByYear(2020);

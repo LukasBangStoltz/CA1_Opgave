@@ -74,12 +74,4 @@ public class CarResource {
         List<CarDTO> cars = FACADE.getByYear(year);
         return GSON.toJson(cars);
     }
-
-    @GET
-    @Path("/owner/{owner}")
-    @Produces({MediaType.APPLICATION_JSON})
-    public String getCarByOwner(@PathParam("owner") String owner) {
-        CarDTO car = FACADE.getByOwner(owner);
-        return GSON.toJson(car);
-    }
 }
