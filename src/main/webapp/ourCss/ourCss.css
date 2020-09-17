@@ -1,0 +1,23 @@
+a:hover {
+    cursor: pointer;
+}
+
+a.ex2:hover, a.ex2:active {
+    font-size: 120%;
+}
+
+
+button:hover {
+    cursor: pointer;
+}
+
+.header-bar {
+    background-color: #292929;
+}
+.hide {
+    display: none;
+}
+.myDIV:hover + .hide {
+    display: block;
+    color: red;
+}
