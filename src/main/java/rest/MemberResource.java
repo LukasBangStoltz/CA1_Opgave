@@ -50,7 +50,7 @@ public class MemberResource {
     }
 
     @GET
-    @Path("/{studentId}")
+    @Path("studentid/{studentId}")
     @Produces({MediaType.APPLICATION_JSON})
     public String getMovieByName(@PathParam("studentId") int studentId) {
         MemberDTO member = FACADE.getMemberByStudentId(studentId);
