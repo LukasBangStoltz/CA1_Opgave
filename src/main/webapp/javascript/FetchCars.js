@@ -76,7 +76,7 @@ function SortByMake() {
     fetch(url)
             .then(res => res.json())
             .then(data => {
-                let sortArray = data.sort((b, a) => a.make < b.make);
+                let sortArray = data.sort((a,b)=> (a.make > b.make)*2-1);
                 let allCars = document.getElementById("mybody");
                 let result = '';
                 sortArray.forEach((x) => {
@@ -99,7 +99,7 @@ function filterByMake() {
                 
                 let typedMake = document.getElementById("filterMake").value;
         
-                let filterArray = data.filter(n=> n.make.equals(typedMake));
+                let filterArray = data.filter(n=> n.make === typedMake );
        
                 let allCars = document.getElementById("mybody");
                 let result = '';
