@@ -1,13 +1,15 @@
 package entities;
 
 import java.io.Serializable;
-import java.time.LocalTime;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @NamedQueries({
@@ -25,6 +27,22 @@ public class Car implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String model;
+    private String make;
+    private int year;
+    private int price;
+    private String owner;
+    @Temporal(TemporalType.DATE)
+    private Date created;
+    
+    public Car(String model, String make, int year, int price, String owner) {
+        this.model = model;
+        this.make = make;
+        this.year = year;
+        this.price = price;
+        this.owner = owner;
+        this.created = new Date();
+    }
 
     public Integer getId() {
         return id;
@@ -32,22 +50,6 @@ public class Car implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    private String model;
-    private String make;
-    private int year;
-    private int price;
-    private String owner;
-   
-
-    public Car(String model, String make, int year, int price, String owner) {
-        this.model = model;
-        this.make = make;
-        this.year = year;
-        this.price = price;
-        this.owner = owner;
-       
     }
 
     public Car() {
@@ -94,6 +96,4 @@ public class Car implements Serializable {
         this.owner = owner;
     }
 
-
-    
 }
