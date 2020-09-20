@@ -36,8 +36,8 @@ getFetchButtonFilterYear.addEventListener('click', (event) =>{
 
 function fetchAllCars() {
     // let price = document.getElementById("valueOfPrice").value
-    //let url = "https://kodekongen.dk/CA1_Opgave/api/car/all";
-    let url = "http://localhost:8080/jpareststarter/api/car/all/"
+    let url = "https://kodekongen.dk/CA1_Opgave/api/car/all";
+    //let url = "http://localhost:8080/jpareststarter/api/car/all/"
     fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -53,8 +53,8 @@ function fetchAllCars() {
 
 function SortByPrice() {
 
-    //let url = "https://kodekongen.dk/CA1_Opgave/api/car/all";
-    let url = "http://localhost:8080/jpareststarter/api/car/all/"
+    let url = "https://kodekongen.dk/CA1_Opgave/api/car/all";
+    //let url = "http://localhost:8080/jpareststarter/api/car/all/"
     fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -71,8 +71,8 @@ function SortByPrice() {
 
 function SortByMake() {
 
-    //let url = "https://kodekongen.dk/CA1_Opgave/api/car/all";
-    let url = "http://localhost:8080/jpareststarter/api/car/all/"
+    let url = "https://kodekongen.dk/CA1_Opgave/api/car/all";
+    //let url = "http://localhost:8080/jpareststarter/api/car/all/"
     fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -89,8 +89,8 @@ function SortByMake() {
 
 function filterByMake() {
 
-    //let url = "https://kodekongen.dk/CA1_Opgave/api/car/all";
-    let url = "http://localhost:8080/jpareststarter/api/car/all/"
+    let url = "https://kodekongen.dk/CA1_Opgave/api/car/all";
+    //let url = "http://localhost:8080/jpareststarter/api/car/all/"
     
     
     fetch(url)
@@ -113,8 +113,8 @@ function filterByMake() {
 
 function filterByYear() {
 
-    //let url = "https://kodekongen.dk/CA1_Opgave/api/car/all";
-    let url = "http://localhost:8080/jpareststarter/api/car/all/"
+    let url = "https://kodekongen.dk/CA1_Opgave/api/car/all";
+    //let url = "http://localhost:8080/jpareststarter/api/car/all/"
     
     
     fetch(url)
